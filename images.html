@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="">
+</head>
+<style>
+.image {
+    border: 1px solid #ddd; /* Gray border */
+    border-radius: 4px;  /* Rounded border */
+    padding: 5px; /* Some padding */
+    width: 350px; /* Set a small width */
+    height: 250px;
+}
+
+.image:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+</style>
+<body style="background-color: rgb(148, 178, 27);">
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded" style ="background-color: rgb(255,43,19);">
+    <a style = "color: rgb(148, 178, 27);" id="home" class="navbar-brand" value="" href="./homepage.html">Home</a>
+    <a id="images" class="navbar-brand" value="" href="./images.html">Image Gallery</a>
+    <a style = "color: rgb(148, 178, 27);" id="diet" class="navbar-brand" value="diet" href="./reindeer_dietary.html">Diet</a>
+    <a id="habitat" class="navbar-brand" value="" href="./habitat.html">Habitat</a>
+    <a style = "color: rgb(148, 178, 27);" id="scientific name" class="navbar-brand" value="" href="./naming.html">Scientific Name/Classification</a>
+    <a id="mating" class="navbar-brand" value="" href="./mating.html">Mating Information</a>
+    <a style = "color: rgb(148, 178, 27);" id="biology" class="navbar-brand" value="" href="./anatomy.html">Anatomy/Biology</a>
+    <a id="behavior" class="navbar-brand" value="" href="./behavior.html">Animal Behavior</a>
+    <a style = "color: rgb(148, 178, 27);" id="miscelaneous" class="navbar-brand" value="" href="./miscelanious.html">Miscellaneous</a>
+  </nav>
+  <h1 style="text-align:center">image gallery</h1>
+  <div id="img-div">
+      <img class='image thumb' title='click for more information' src="./img1.jpg" alt="">
+      <h2 hidden>multi-purpose animals</h2>
+      <h4 hidden>little known fact: reindeer are used as christmas tree substitues in some parts of the world</h4>
+      <img class='image thumb' title='click for more information' src="./img2.jpg" alt="">
+      <h2 hidden>santa</h2>
+      <h4 hidden>this is definitely santa with one of his reindeer. totally.</h4>
+      <img class='image thumb' title='click for more information' src="./img3.jpg" alt="">
+      <h2 hidden>exercise</h2>
+      <h4 hidden>a good reindeer always knows its never too early to work on your summer bod</h4>
+      <img class='image thumb' title='click for more information' src="./img4.jpg" alt="">
+      <h2 hidden>reindeer mistaken for a wreath</h2>
+      <h4 hidden>photo taken moments before it decided it had enough of this...</h4>
+      <img class='image thumb' title='click for more information' src="./img5.jpg" alt="">
+      <h2 hidden>collared reindeer</h2>
+      <h4 hidden>psa: reindeer are not dogs. stop it</h4>
+      <img class='image thumb' title='click for more information' src="./img6.jpg" alt="">
+      <h2 hidden>rudolph</h2>
+      <h4 hidden>a child has stolen rudolphs nose. what will santa do now</h4>
+  </div>
+  <div id='upload-button'>
+    <input type="text" id='input-box'>
+    <button id='img-upload' type="submit">upload your own image</button>
+  </div>
+  <div id='main'></div>
+</body>
+<script>
+  $('#img-upload').on('click',function(){
+    var addr = $('#input-box').val();
+    $('#img-div').append("<a href='#'><img class='image thumb' title='click for more information' src='"+addr+"'></a>")
+  })
+  $('.thumb').on('click', function(){
+    var that = $(this);
+    $('.thumb').hide()
+    that.removeClass('image');
+    that.show();
+    that.next()[0].hidden=false;
+    that.next().next()[0].hidden=false;
+    $('#upload-button').hide()
+    $('#main').append("<button>back</button>")
+  })
+  $('#main').on('click','button',function(){
+    location.reload();
+  })
+</script>
+</html>
